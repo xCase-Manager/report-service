@@ -24,10 +24,10 @@ namespace XCaseManager.Messenger.Controllers
         }
 
         [HttpGet]
-        public IEnumerable<Execution> Get()
+        public IEnumerable<ExecutionItem> Get()
         {
             var rng = new Random();
-            return Enumerable.Range(1, 5).Select(index => new Execution
+            return Enumerable.Range(1, 5).Select(index => new ExecutionItem
             {
                 Date = DateTime.Now.AddDays(index),
                 TemperatureC = rng.Next(-20, 55),
