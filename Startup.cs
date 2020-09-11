@@ -13,6 +13,8 @@ namespace XCaseManager.Messenger
 {
     public class Startup
     {
+        readonly string AllowedOriginPolicy = "corsPolicy";
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -29,7 +31,7 @@ namespace XCaseManager.Messenger
 
             services.AddCors(options =>
             {
-                options.AddPolicy(name: "corsPolicy",
+                options.AddPolicy(name: AllowedOriginPolicy,
                               builder =>
                               {
                                   builder.WithOrigins("http://localhost:3006",
@@ -51,7 +53,7 @@ namespace XCaseManager.Messenger
 
             //app.UseHttpsRedirection();
 
-            app.UseCors("corsPolicy");
+            app.UseCors(AllowedOriginPolicy);
 
             app.UseRouting();
 
