@@ -20,15 +20,28 @@ namespace XCaseManager.Messenger
 
         public IConfiguration Configuration { get; }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
+        // container services
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<ExecutionDBContext>(opt =>
                opt.UseInMemoryDatabase("ExecutionList"));
             services.AddControllers();
+
+            services.AddCors(options =>
+            {
+                options.AddPolicy(name: "corsPolicy",
+                              builder =>
+                              {
+                                  builder.WithOrigins("http://localhost:3006",
+                                                      "http://localhost:3005");
+                              });
+            });
+
+            // services.AddResponseCaching();
+             services.AddControllers();
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+        // HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
@@ -36,7 +49,9 @@ namespace XCaseManager.Messenger
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseHttpsRedirection();
+            //app.UseHttpsRedirection();
+
+            app.UseCors("corsPolicy");
 
             app.UseRouting();
 
