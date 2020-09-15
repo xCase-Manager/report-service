@@ -35,7 +35,8 @@ namespace XCaseManager.Messenger
                               builder =>
                               {
                                   builder.WithOrigins("http://localhost:3006",
-                                                      "http://localhost:3005");
+                                                      "http://localhost:3005")
+                                        .WithMethods("GET", "POST", "PUT", "DELETE");
                               });
             });
 
