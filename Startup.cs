@@ -27,6 +27,13 @@ namespace XCaseManager.Messenger
         {
             services.AddDbContext<ExecutionDBContext>(opt =>
                opt.UseInMemoryDatabase("ExecutionList"));
+
+            services.AddDbContext<TestcaseDBContext>(opt =>
+               opt.UseInMemoryDatabase("TestcaseList"));
+            
+            services.AddDbContext<ProjectDBContext>(opt =>
+               opt.UseInMemoryDatabase("ProjectList"));
+
             services.AddControllers();
 
             services.AddCors(options =>
