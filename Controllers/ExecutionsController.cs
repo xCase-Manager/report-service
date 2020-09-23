@@ -32,7 +32,7 @@ namespace Messenger.Controllers
         }
 
         /*
-        * GET an Executions
+        * GET an Execution
         * @input id
         * @output execution
         */
