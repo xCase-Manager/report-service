@@ -1,14 +1,15 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using XCaseManager.Messenger.Models;
 
 namespace Messenger.Controllers
 {
+    /*
+    * Controller for executions
+    */
     [Route("api/[controller]")]
     [ApiController]
     public class ExecutionsController : ControllerBase
@@ -20,14 +21,21 @@ namespace Messenger.Controllers
             _context = context;
         }
 
-        // GET: api/Executions
+        /*
+        * GET Executions list
+        * @output executions
+        */
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Execution>>> GetExecutions()
         {
             return await _context.Executions.ToListAsync();
         }
 
-        // GET: api/Executions/5
+        /*
+        * GET an Executions
+        * @input id
+        * @output execution
+        */
         [HttpGet("{id}")]
         public async Task<ActionResult<Execution>> GetExecution(long id)
         {
@@ -41,9 +49,12 @@ namespace Messenger.Controllers
             return execution;
         }
 
-        // PUT: api/Executions/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for
-        // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
+        /*
+        * PUT Execution
+        * @input id
+        * @input execution
+        * @output execution
+        */
         [HttpPut("{id}")]
         public async Task<IActionResult> PutExecution(long id, Execution execution)
         {
@@ -73,9 +84,11 @@ namespace Messenger.Controllers
             return NoContent();
         }
 
-        // POST: api/Executions
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for
-        // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
+        /*
+        * POST Execution
+        * @input execution
+        * @output execution
+        */
         [HttpPost]
         public async Task<ActionResult<Execution>> PostExecution(Execution execution)
         {
@@ -85,7 +98,10 @@ namespace Messenger.Controllers
             return CreatedAtAction(nameof(GetExecution), new { id = execution.Id }, execution);
         }
 
-        // DELETE: api/Executions/5
+        /*
+        * DELETE Execution
+        * @input id
+        */
         [HttpDelete("{id}")]
         public async Task<ActionResult<Execution>> DeleteExecution(long id)
         {
