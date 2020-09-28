@@ -3,6 +3,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using XCaseManager.Messenger.Models;
+using Services;
+
 
 namespace Messenger.Controllers
 {
@@ -14,10 +16,13 @@ namespace Messenger.Controllers
     public class TestcasesController : ControllerBase
     {
         private readonly TestcaseDBContext _context;
+        private readonly TestcaseService _testcaseService;
 
-        public TestcasesController(TestcaseDBContext context)
+        public TestcasesController(TestcaseDBContext context, 
+            TestcaseService testcaseService)
         {
             _context = context;
+            _testcaseService = testcaseService;
         }
 
         /*
@@ -25,10 +30,8 @@ namespace Messenger.Controllers
         * @output testcases
         */
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Testcase>>> GetTestcases()
-        {
-            return await _context.Testcases.ToListAsync();
-        }
+        public ActionResult<List<Models.Testcase.Testcase>> Get() =>
+            _testcaseService.Get();
 
         /*
         * GET a testcase
