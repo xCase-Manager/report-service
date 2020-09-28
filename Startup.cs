@@ -1,13 +1,13 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using Microsoft.EntityFrameworkCore;
 using XCaseManager.Messenger.Models;
+using Microsoft.Extensions.Options;
+using Models;
+using Services;
 
 namespace XCaseManager.Messenger
 {
@@ -25,6 +25,14 @@ namespace XCaseManager.Messenger
         // container services
         public void ConfigureServices(IServiceCollection services)
         {
+            services.Configure<DBSettings>(
+                Configuration.GetSection(nameof(DBSettings)));
+
+            services.AddSingleton<DBSettings>(sp =>
+                sp.GetRequiredService<IOptions<DBSettings>>().Value);
+
+            services.AddSingleton<TestcaseService>();
+
             services.AddDbContext<ExecutionDBContext>(opt =>
                opt.UseInMemoryDatabase("ExecutionList"));
 
