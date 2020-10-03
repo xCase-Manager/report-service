@@ -1,4 +1,4 @@
-namespace Models
+namespace Models.Testcase
 {
     public class DBSettings : IDBSettings
     {
