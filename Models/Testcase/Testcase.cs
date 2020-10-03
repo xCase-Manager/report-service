@@ -2,7 +2,7 @@ using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 using System.Collections.Generic;
 
-namespace Models.Testcase
+namespace XCaseManager.ReportService.Models.Testcase
 {
     public class Testcase
     {

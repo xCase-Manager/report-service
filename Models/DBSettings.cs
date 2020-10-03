@@ -1,4 +1,4 @@
-namespace Models
+namespace XCaseManager.ReportService.Models
 {
     public class DBSettings : IDBSettings
     {

@@ -1,13 +1,10 @@
 using System.Collections.Generic;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using XCaseManager.Messenger.Models;
-using Services;
-using Models.Testcase;
+using XCaseManager.ReportService.Models.Testcase;
+using XCaseManager.ReportService.Services;
 
 
-namespace Messenger.Controllers
+namespace XCaseManager.ReportService.Controllers
 {
     /*
     * Controller for testcases

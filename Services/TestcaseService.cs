@@ -1,10 +1,10 @@
-using Models.Testcase;
 using MongoDB.Driver;
 using System.Collections.Generic;
 using System.Linq;
-using Models;
+using XCaseManager.ReportService.Models;
+using XCaseManager.ReportService.Models.Testcase;
 
-namespace Services
+namespace XCaseManager.ReportService.Services
 {
     public class TestcaseService
     {
