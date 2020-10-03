@@ -1,5 +1,6 @@
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
+using System.Collections.Generic;
 
 namespace Models.Testcase
 {
@@ -20,5 +21,11 @@ namespace Models.Testcase
 
         [BsonElement("id")]
         public int Id { get; set; }
+
+        [BsonElement("steps")]
+        public List<Step> Steps {get; set;}
+
+        [BsonElement("__v")]
+        public bool version { get; set; }
     }
 }
