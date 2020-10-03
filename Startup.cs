@@ -6,7 +6,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
 using XCaseManager.Messenger.Models;
 using Microsoft.Extensions.Options;
-using Models;
+using Models.Testcase;
 using Services;
 
 namespace XCaseManager.Messenger
@@ -25,24 +25,14 @@ namespace XCaseManager.Messenger
         // container services
         public void ConfigureServices(IServiceCollection services)
         {
+        
             services.Configure<DBSettings>(
                 Configuration.GetSection(nameof(DBSettings)));
 
-            services.AddSingleton<DBSettings>(sp =>
+            services.AddSingleton<IDBSettings>(sp =>
                 sp.GetRequiredService<IOptions<DBSettings>>().Value);
 
             services.AddSingleton<TestcaseService>();
-
-            services.AddDbContext<ExecutionDBContext>(opt =>
-               opt.UseInMemoryDatabase("ExecutionList"));
-
-            services.AddDbContext<TestcaseDBContext>(opt =>
-               opt.UseInMemoryDatabase("TestcaseList"));
-            
-            services.AddDbContext<ProjectDBContext>(opt =>
-               opt.UseInMemoryDatabase("ProjectList"));
-
-            services.AddControllers();
 
             services.AddCors(options =>
             {
