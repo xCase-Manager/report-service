@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using XCaseManager.Messenger.Models;
 using Services;
+using Models.Testcase;
 
 
 namespace Messenger.Controllers
@@ -15,13 +16,11 @@ namespace Messenger.Controllers
     [ApiController]
     public class TestcasesController : ControllerBase
     {
-        private readonly TestcaseDBContext _context;
         private readonly TestcaseService _testcaseService;
 
-        public TestcasesController(TestcaseDBContext context, 
+        public TestcasesController( 
             TestcaseService testcaseService)
         {
-            _context = context;
             _testcaseService = testcaseService;
         }
 
@@ -30,25 +29,7 @@ namespace Messenger.Controllers
         * @output testcases
         */
         [HttpGet]
-        public ActionResult<List<Models.Testcase.Testcase>> Get() =>
+        public ActionResult<List<Testcase>> Get() =>
             _testcaseService.Get();
-
-        /*
-        * GET a testcase
-        * @input id
-        * @output testcase
-        */
-        [HttpGet("{id}")]
-        public async Task<ActionResult<Testcase>> GetTestcase(long id)
-        {
-            var testcase = await _context.Testcases.FindAsync(id);
-
-            if (testcase == null)
-            {
-                return NotFound();
-            }
-
-            return testcase;
-        }
     }
 }

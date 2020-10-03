@@ -1,4 +1,4 @@
-using Models;
+using Models.Testcase;
 using MongoDB.Driver;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,20 +7,19 @@ namespace Services
 {
     public class TestcaseService
     {
-        private readonly IMongoCollection<Models.Testcase.Testcase> _testcases;
+        private readonly IMongoCollection<Testcase> _testcases;
 
-        public TestcaseService(Models.IDBSettings settings)
+        public TestcaseService(IDBSettings settings)
         {
             var client = new MongoClient(settings.ConnectionString);
             var database = client.GetDatabase(settings.DatabaseName);
-
-            _testcases = database.GetCollection<Models.Testcase.Testcase>(settings.TestcaseCollectionName);
+            _testcases = database.GetCollection<Testcase>(settings.TestcaseCollectionName);
         }
 
-        public List<Models.Testcase.Testcase> Get() =>
+        public List<Testcase> Get() =>
             _testcases.Find(testcase => true).ToList();
 
-        public Models.Testcase.Testcase Get(string id) =>
-            _testcases.Find<Models.Testcase.Testcase>(testcase => testcase._Id == id).FirstOrDefault();
+        public Testcase Get(string id) =>
+            _testcases.Find<Testcase>(testcase => testcase._Id == id).FirstOrDefault();
     }
 }
