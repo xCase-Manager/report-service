@@ -6,7 +6,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
 using XCaseManager.Messenger.Models;
 using Microsoft.Extensions.Options;
-using Models.Testcase;
+using Models;
 using Services;
 
 namespace XCaseManager.Messenger
