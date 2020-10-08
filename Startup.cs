@@ -31,6 +31,7 @@ namespace XCaseManager.Messenger
             services.AddSingleton<IDBSettings>(sp =>
                 sp.GetRequiredService<IOptions<DBSettings>>().Value);
 
+            services.AddSingleton<ProjectService>();
             services.AddSingleton<TestcaseService>();
 
             services.AddCors(options =>
