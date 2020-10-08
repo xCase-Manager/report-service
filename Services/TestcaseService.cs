@@ -10,6 +10,9 @@ namespace XCaseManager.ReportService.Services
     {
         private readonly IMongoCollection<Testcase> _testcases;
 
+        /*
+        * Testcase repository service
+        */
         public TestcaseService(IDBSettings settings)
         {
             var client = new MongoClient(settings.ConnectionString);
@@ -17,9 +20,18 @@ namespace XCaseManager.ReportService.Services
             _testcases = database.GetCollection<Testcase>(settings.TestcaseCollectionName);
         }
 
+        /*
+        * Get testcases list
+        * @output testcases list
+        */
         public List<Testcase> Get() =>
             _testcases.Find(testcase => true).ToList();
 
+        /*
+        * Find a testcase
+        * @input id
+        * @output testcase
+        */
         public Testcase Get(int id) =>
             _testcases.Find<Testcase>(testcase => testcase.Id == id).FirstOrDefault();
     }
