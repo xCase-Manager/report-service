@@ -20,7 +20,7 @@ namespace XCaseManager.ReportService.Services
         public List<Testcase> Get() =>
             _testcases.Find(testcase => true).ToList();
 
-        public Testcase Get(string id) =>
-            _testcases.Find<Testcase>(testcase => testcase._Id == id).FirstOrDefault();
+        public Testcase Get(int id) =>
+            _testcases.Find<Testcase>(testcase => testcase.Id == id).FirstOrDefault();
     }
 }

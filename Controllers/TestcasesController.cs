@@ -28,5 +28,13 @@ namespace XCaseManager.ReportService.Controllers
         [HttpGet]
         public ActionResult<List<Testcase>> Get() =>
             _testcaseService.Get();
+
+        /*
+        * GET Testcase
+        * @output testcase
+        */
+        [HttpGet("{id}", Name = "GetTestcase")]
+        public ActionResult<Testcase> Get(int id) =>
+            _testcaseService.Get(id);
     }
 }
