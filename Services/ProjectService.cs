@@ -27,5 +27,13 @@ namespace XCaseManager.ReportService.Services
         */
         public List<Project> Get() =>
             _projects.Find(testcase => true).ToList();
+
+        /*
+        * Find a project
+        * @input id
+        * @output project
+        */
+        public Project Get(string id) =>
+            _projects.Find<Project>(project => project.Id == id).FirstOrDefault();
     }
 }
