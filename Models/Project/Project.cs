@@ -1,5 +1,6 @@
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
+using System;
 
 namespace XCaseManager.ReportService.Models.Project
 {
@@ -9,16 +10,22 @@ namespace XCaseManager.ReportService.Models.Project
         [BsonRepresentation(BsonType.ObjectId)]
         public string _Id { get; set; }
 
-        [BsonElement("title")]
+        [BsonElement("id")]
+        public string Id { get; set; }
+
+        [BsonElement("name")]
         public string Name { get; set; }
 
         [BsonElement("description")]
         public string Description { get; set; }
 
         [BsonElement("icon")]
-        public bool Icon { get; set; }
+        public string Icon { get; set; }
+
+        [BsonElement("created")]
+        public DateTime CreationTime { get; set; }
 
         [BsonElement("__v")]
-        public bool Version { get; set; }
+        public Int32 Version { get; set; }
     }
 }
