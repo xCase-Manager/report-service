@@ -23,7 +23,7 @@ namespace XCaseManager.ReportService.Controllers
 
         /*
         * GET Projects list
-        * @output projects list
+        * @output projects
         */
         [HttpGet]
         public ActionResult<List<Project>> Get() =>
@@ -32,7 +32,7 @@ namespace XCaseManager.ReportService.Controllers
         /*
         * GET Project
         * @input id
-        * @output project
+        * @output projects
         */
         [HttpGet("{id}", Name = "GetProject")]
         public ActionResult<Project> Get(string id) {
