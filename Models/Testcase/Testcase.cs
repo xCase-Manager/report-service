@@ -1,5 +1,6 @@
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
+using System;
 using System.Collections.Generic;
 
 namespace XCaseManager.ReportService.Models.Testcase
@@ -21,6 +22,9 @@ namespace XCaseManager.ReportService.Models.Testcase
 
         [BsonElement("id")]
         public int Id { get; set; }
+
+        [BsonElement("status")]
+        public Int32 Status { get; set; }
 
         [BsonElement("steps")]
         public List<Step> Steps {get; set;}

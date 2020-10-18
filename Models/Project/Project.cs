@@ -22,6 +22,9 @@ namespace XCaseManager.ReportService.Models.Project
         [BsonElement("icon")]
         public string Icon { get; set; }
 
+        [BsonElement("status")]
+        public Int32 Status { get; set; }
+
         [BsonElement("created")]
         public DateTime CreationTime { get; set; }
 
