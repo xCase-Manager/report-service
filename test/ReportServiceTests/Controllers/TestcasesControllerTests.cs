@@ -6,15 +6,15 @@ using Xunit;
 
 namespace XCaseManager.ReportServiceTests.Controllers
 {
-    public class ProjectControllerTests : IntegrationTest
+    public class TestcaseControllerTests : IntegrationTest
     {
-        public ProjectControllerTests(ApiWebApplicationFactory fixture)
+        public TestcaseControllerTests(ApiWebApplicationFactory fixture)
             : base(fixture) { }
 
         [Fact]
-        public async Task Get_Should_Return_Projects()
+        public async Task Get_Should_Return_Testcases()
         {
-            var response = await _client.GetAsync("/api/projects");
+            var response = await _client.GetAsync("/api/testcases");
             response.StatusCode.Should().Be(HttpStatusCode.OK);
         }
     }  
