@@ -4,6 +4,7 @@ namespace XCaseManager.ReportService.Models
     {
         public string ProjectCollectionName { get; set; }
         public string TestcaseCollectionName { get; set; }
+        public string ExecutionCollectionName { get; set; }
         public string ConnectionString { get; set; }
         public string DatabaseName { get; set; }
     }
@@ -12,6 +13,7 @@ namespace XCaseManager.ReportService.Models
     {
         string ProjectCollectionName { get; set; }
         string TestcaseCollectionName { get; set; }
+        string ExecutionCollectionName { get; set; }
         string ConnectionString { get; set; }
         string DatabaseName { get; set; }
     }
